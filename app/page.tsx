@@ -1,5 +1,3 @@
-import { JSX } from "react";
-
-export default function Page(): JSX.Element {
+export default function Page() {
   return <div>hi</div>;
 }
