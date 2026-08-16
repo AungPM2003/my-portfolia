@@ -1,9 +1,8 @@
-import SideNavigation from "@/app/_components/SideNavigation";
 import Header from "@/app/_components/Header";
 import "@/app/globals.css";
 import { Metadata } from "next";
 import { Josefin_Sans } from "next/font/google";
-import SideNav from "./_components/SideNav";
+import SideNav from "@/app/_components/sideNav/index";
 
 export const metadata: Metadata = {
   title: {
@@ -28,7 +27,9 @@ export default function RootLayout({
         <div className="w-full max-h-dvh">
           <Header />
           <div className="max-w-350 border border-accent-300 grid grid-cols-[200px_minmax(0,1fr)] mx-auto  pt-[8em]">
-            <SideNav/>
+            <nav className="hidden lg:block p-3 border border-red-400 rounded-md">
+              <SideNav/>
+            </nav>
             <main>{children}</main>
           </div>
         </div>
