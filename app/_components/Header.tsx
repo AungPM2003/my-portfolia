@@ -10,7 +10,7 @@ export default function Header(): JSX.Element {
   function handleToggle(){
     setToggle(() => !toggle)
   }
-  console.log(toggle)
+
   return (
     <>
     <div className="bg-primary-600 absolute top-0 z-50 flex h-16 w-full items-center justify-between border-b border-slate-200 px-4 text-xl sm:px-6 md:px-8 lg:px-10 xl:px-12">
@@ -23,12 +23,14 @@ export default function Header(): JSX.Element {
       <button
         type="button"
         onClick={handleToggle}
-        className="border-accent-400 focus-visible:ring-accent-400 focus-visible:outline-accent-400 flex cursor-pointer rounded-lg border p-1.5 outline-none focus-visible:ring-2 md:hidden"
+        className="border-accent-400 focus-visible:ring-accent-400 focus-visible:outline-accent-400 flex cursor-pointer rounded-lg border p-1.5 outline-none focus-visible:ring-2 lg:hidden"
       >
         <Bars3Icon className="size-6 text-black" />
       </button>
     </div>
-    <NavModal toggle={toggle} handleToggle={handleToggle} />
+
+    
+      <NavModal toggle={toggle} handleToggle={handleToggle} />
     </>
   );
 }

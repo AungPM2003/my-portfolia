@@ -13,7 +13,7 @@ interface Props{
 export default function NavIconLink({children,icon,href,target}:Props){ 
     const selected = useSelectedLayoutSegment()
     return(
-        <Link href={href} target={target} className={clsx("flex items-center border border-accent-400 p-4 gap-4 rounded-md place-items-center font-bold transition-[color,background-color,border-color] duration-300 hover:bg-accent-400",
+        <Link href={href} target={target} className={clsx("flex items-center  p-4 gap-4 rounded-md place-items-center font-bold transition-[color,background-color,border-color] duration-300 hover:bg-accent-400",
             {
                 "bg-accent-800":`/${selected}` === href || (selected === null && href ==="/"),
             }
