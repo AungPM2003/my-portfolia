@@ -3,6 +3,8 @@ import "@/app/globals.css";
 import { Metadata } from "next";
 import { Josefin_Sans } from "next/font/google";
 import SideNav from "@/app/_components/sideNav/index";
+import { SanityLive } from "@/sanity/lib/live";
+
 
 export const metadata: Metadata = {
   title: {
@@ -24,13 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${josefin.className} h-full antialiased`}>
       <body className="bg-primary-300 flex h-full min-h-full flex-col">
-        <div className="w-full max-h-dvh">
+        <div className="max-h-dvh w-full">
           <Header />
-          <div className="max-w-350 border border-accent-300 grid grid-cols-[200px_minmax(0,1fr)] mx-auto  pt-[8em]">
-            <nav className="hidden lg:block p-3 border border-red-400 rounded-md">
-              <SideNav/>
+          <div className="border-accent-300 mx-auto grid max-w-350 grid-cols-[200px_minmax(0,1fr)] border pt-[8em]">
+            <nav className="hidden rounded-md border border-red-400 p-3 lg:block">
+              <SideNav />
             </nav>
             <main>{children}</main>
+            <SanityLive/>
           </div>
         </div>
       </body>

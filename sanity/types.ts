@@ -15,6 +15,13 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: sanity/extract.json
+export type SanityImageAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+};
+
 export type Author = {
   _id: string;
   _type: "author";
@@ -22,7 +29,31 @@ export type Author = {
   _updatedAt: string;
   _rev: string;
   name?: string;
+  authorImage?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alternativeText?: string;
+    _type: "image";
+  };
   bio?: string;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x: number;
+  y: number;
+  height: number;
+  width: number;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -61,22 +92,6 @@ export type SanityImageMetadata = {
   thumbHash?: string;
   hasAlpha?: boolean;
   isOpaque?: boolean;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x: number;
-  y: number;
-  height: number;
-  width: number;
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
 };
 
 export type SanityFileAsset = {
@@ -145,15 +160,41 @@ export type Slug = {
 };
 
 export type AllSanitySchemaTypes =
+  | SanityImageAssetReference
   | Author
+  | SanityImageCrop
+  | SanityImageHotspot
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
   | SanityImageMetadata
-  | SanityImageHotspot
-  | SanityImageCrop
   | SanityFileAsset
   | SanityAssetSourceData
   | SanityImageAsset
   | Geopoint
   | Slug;
+
+// Source: app/(web)/about/query.tsx
+// Variable: AUTHOR_QUERY
+// Query: *[_type=="author" && defined(authorImage)][0]{    _id,authorImage,bio,name  }
+export type AUTHOR_QUERY_RESULT = {
+  _id: string;
+  authorImage: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alternativeText?: string;
+    _type: "image";
+  };
+  bio: string | null;
+  name: string | null;
+} | null;
+
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    '*[_type=="author" && defined(authorImage)][0]{\n    _id,authorImage,bio,name\n  }': AUTHOR_QUERY_RESULT;
+  }
+}
