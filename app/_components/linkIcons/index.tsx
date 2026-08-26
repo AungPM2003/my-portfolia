@@ -35,5 +35,4 @@ function LinkedIn(props: Props) {
   );
 }
 
-
-export { Github, LinkedIn};
+export { Github, LinkedIn };
