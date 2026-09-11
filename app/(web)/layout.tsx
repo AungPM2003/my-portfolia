@@ -25,14 +25,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${josefin.className} h-full antialiased`}>
-      <body className="bg-primary-300 flex h-full min-h-full flex-col">
+      <body className="bg-deep-1 text-deep-5 flex h-full min-h-full flex-col">
         <div className="max-h-dvh w-full">
           <Header />
-          <div className="border-accent-300 mx-auto grid max-w-350 grid-cols-[200px_minmax(0,1fr)] border pt-[8em]">
-            <nav className="hidden rounded-md border border-red-400 p-3 lg:block">
+          <div className="mx-auto max-w-350 grid grid-cols-[200px_minmax(0,1fr)] pt-[8em] ">
+            <nav className="hidden rounded-md border border-deep-2 bg-deep-2/40 backdrop-blur-md shadow-lg p-3 lg:block">
               <SideNav />
             </nav>
-            <main>{children}</main>
+            <main className="p-4">{children}</main>
             <SanityLive/>
           </div>
         </div>

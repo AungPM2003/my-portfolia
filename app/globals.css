@@ -24,4 +24,11 @@
   --color-accent-800: #6c4d28;
   --color-accent-900: #4b351b;
   --color-accent-950: #382814;
+
+  /* deep sea theme */
+  --color-deep-1:#0d1b2a;
+  --color-deep-2:#1b263b;
+  --color-deep-3:#415a77;
+  --color-deep-4:#778da9;
+  --color-deep-5:#e0e1dd;
 }

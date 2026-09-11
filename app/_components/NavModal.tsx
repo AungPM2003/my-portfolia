@@ -29,11 +29,11 @@ export default function NavModal({ toggle, handleToggle }: Props) {
   return (
     <div
       role="dialog"
-      className="bg-accent-400 fixed inset-0 z-50 grid h-dvh place-items-center py-6 text-white backdrop-blur-lg"
+      className="fixed inset-0 z-50 grid h-dvh place-items-center py-6 bg-deep-2/70"
       onClick={handleToggle}
     >
       <div
-        className="bg-accent-950 w-[90%] max-w-sm rounded-2xl p-4 shadow-lg"
+        className=" border border-deep-2 bg-deep-2/40 backdrop-blur-md  w-[90%] max-w-sm rounded-2xl p-4 shadow-lg"
         onClick={(e) => e.stopPropagation()}
       >
         <SideNav />
