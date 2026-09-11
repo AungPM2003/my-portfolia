@@ -12,7 +12,7 @@ export default function SideNav() {
         ))}
       </div>
 
-      <hr className="border-accent-500 my-1 h-px cursor-pointer" />
+      <hr className="border-deep-4 my-1 h-px cursor-pointer" />
       <div className="flex flex-col gap-1.5 rounded-md pt-2">
         {linkItems.map((item) => (
           <NavLink key={item.id} icon={item.icon} href={item.href}>

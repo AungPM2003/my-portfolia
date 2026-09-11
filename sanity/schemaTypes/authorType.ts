@@ -35,7 +35,7 @@ export const author = defineType({
     defineField({
       title: "Bio",
       name: "bio",
-      type: "text",
+      type: "blockContent",
     }),
   ],
 });
