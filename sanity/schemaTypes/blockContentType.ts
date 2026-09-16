@@ -10,13 +10,12 @@ export const blockContent = defineType({
             type:'block',
             /* for text style for content */
             styles:[
-                {title:'Normal',value:'normal'},
-                {title:'H1',value:'h1'},
-                {title:'H2',value:'h2'},
-                {title:'H3',value:'h3'},
-                {title:'H4',value:'h4'},
+                {title:"Normal",value:"normal"},
+                {title:"Large",value:"lg"},
+                {title:"Heading",value:"heading"},
                 {title:'Quote',value:'blockquote'}
             ],
+
             /* for paragraph listing */
             lists:[
                 {title:'Bullet',value:'bullet'}
@@ -39,6 +38,11 @@ export const blockContent = defineType({
                             type: 'url',
                         },
                         ],
+                    },
+                    //simple text input color
+                    {
+                        title:'Color',
+                        type:'textColor'
                     }
                 ]
             }

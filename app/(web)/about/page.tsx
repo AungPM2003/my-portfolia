@@ -11,24 +11,27 @@ export default async function page() {
   return (
     <div>
       <Title text="About"/>
-      <div>  
-        <h1 className="text-4xl text-highlight">{author?.name}</h1>
-        {/* <div>
+      <div>
+        <h1 className="text-4xl text-highlight">{author?.name}</h1>  
+      
+        <div className="float-left p-4">
           {
             author?.authorImage ? 
-            <Image src={urlFor(author.authorImage).url()} width={300} height={300} alt={`${author.authorImage.alternativeText}`}/>:
+            <Image src={urlFor(author.authorImage).url()} className="object-cover rounded-s-xl " width={150} height={100} alt={`${author.authorImage.alternativeText}`}/>:
             null
           }
-        </div> */}
+        </div>
+        <div className="p-4">
+          {
+            author?.bio ? (
+              <PortableText value={author.bio} components={components}/>
 
-        {
-          author?.bio ? (
-            <PortableText value={author.bio} components={components}/>
+            ):null
+            
+          }
+        </div>
 
-          ):null
-          
-        }
-      </div>
+        </div>
     </div>
   );
 }
