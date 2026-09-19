@@ -13,8 +13,8 @@ export default async function page() {
   return (
     <div>
       <Title text="About"/>
-      <div>
-        <h1 className="text-4xl text-highlight">{author?.name}</h1>  
+      <div className="px-4">
+        <h1 className="text-5xl text-highlight py-5">{author?.name}</h1>  
       
         <div className="float-left p-4">
           {
@@ -23,7 +23,7 @@ export default async function page() {
             null
           }
         </div>
-        <div className="p-4 text-default/loose">
+        <div className=" text-paragraph/10">
           {
             author?.bio ? (
               <PortableText value={author.bio} components={components}/>
@@ -32,11 +32,11 @@ export default async function page() {
             
           }
         </div>
-        <div className="w-fit rounded-md flex  gap-2 border border-deep-2 bg-deep-2/40 backdrop-blur-md shadow-lg p-3">
+        <div className="w-fit rounded-md flex gap-2 border border-deep-2 bg-deep-2/40 backdrop-blur-md shadow-lg p-3 my-4">
           <div className="text-highlight-alt text-xl whitespace-nowrap">
               Tech Stack : 
           </div>
-          <div className="flex max-w-75 gap-2 flex-wrap">
+          <div className="flex max-w-75 gap-2 flex-wrap ">
             {
             techIcons.map((icon) => (
               <span key={icon.id}>{icon.name}</span>
