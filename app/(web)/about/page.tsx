@@ -5,6 +5,8 @@ import Image from "next/image";
 import Title from '@/app/_components/title';
 import { PortableText } from "next-sanity";
 import { components } from "@/sanity/portableTextComponent";
+import techIcons from "./techIcons";
+
 
 export default async function page() {
   const {data:author} = await sanityFetch({query:AUTHOR_QUERY})
@@ -21,7 +23,7 @@ export default async function page() {
             null
           }
         </div>
-        <div className="p-4">
+        <div className="p-4 text-default/loose">
           {
             author?.bio ? (
               <PortableText value={author.bio} components={components}/>
@@ -30,8 +32,19 @@ export default async function page() {
             
           }
         </div>
-
+        <div className="w-fit rounded-md flex  gap-2 border border-deep-2 bg-deep-2/40 backdrop-blur-md shadow-lg p-3">
+          <div className="text-highlight-alt text-xl whitespace-nowrap">
+              Tech Stack : 
+          </div>
+          <div className="flex max-w-75 gap-2 flex-wrap">
+            {
+            techIcons.map((icon) => (
+              <span key={icon.id}>{icon.name}</span>
+            ))
+            }
+          </div>
         </div>
+      </div>
     </div>
   );
 }

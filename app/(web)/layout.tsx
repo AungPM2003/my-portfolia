@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${indieFlower.className} tracking-wide h-full antialiased font-bold`}>
-      <body className="bg-deep-1 text-text-secondary flex h-full min-h-full flex-col">
+      <body className="bg-deep-1 text-text-secondary flex h-full min-h-full flex-col text-default">
         <div className="max-h-dvh w-full">
           <Header />
           <div className="mx-auto max-w-350 grid grid-cols-[200px_minmax(0,1fr)] pt-[8em] ">

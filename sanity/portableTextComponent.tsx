@@ -13,8 +13,8 @@ export const components:PortableTextComponents = {
         textColor:({children,value}) => <span style={{color:value.value}}> {children}</span>,
     },
     block:{
-        lg:({children}) => <p className="text-lg">{children}</p>,
-        heading:({children}) => <h1 className="text-2xl"> {children}</h1>,
+        lg:({children}) => <p>{children}</p>,
+        heading:({children}) => <h1 className="text-3xl my-2"> {children}</h1>,
     }
 }
 
