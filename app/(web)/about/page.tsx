@@ -23,7 +23,7 @@ export default async function page() {
             null
           }
         </div>
-        <div className=" text-paragraph/10">
+        <div className="text-paragraph/10">
           {
             author?.bio ? (
               <PortableText value={author.bio} components={components}/>
