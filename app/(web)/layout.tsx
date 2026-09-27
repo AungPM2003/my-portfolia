@@ -24,15 +24,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${indieFlower.className} tracking-wide h-full antialiased font-bold`}>
+    <html lang="en" className={`${indieFlower.className} tracking-wide h-full antialiased font-bold scroll-smooth`}>
       <body className="bg-deep-1 text-text-secondary flex h-full min-h-full flex-col text-default">
-        <div className="max-h-dvh w-full">
+        <div className="max-h-dvh w-full ">
           <Header />
-          <div className="mx-auto max-w-350 grid grid-cols-[200px_minmax(0,1fr)] pt-[8em] ">
-            <nav className="hidden my-3 self-start rounded-md border border-deep-2 bg-deep-2/40 backdrop-blur-md shadow-lg p-3 lg:block">
+          <div className="mx-auto md:max-w-275 lg:max-w-375 lg:grid lg:grid-cols-[200px_minmax(0,1fr)] overflow-hidden ">
+            <nav className="hidden pt-[8em] lg:ps-2 lg:block">
               <SideNav />
             </nav>
-            <main className="p-4 grid grid-cols-[minmax(0,1fr)_300px]">{children}</main>
+            <main className="h-dvh p-4 pt-[8em] lg:grid lg:grid-cols-[minmax(0,1fr)_300px] overflow-y-scroll scrollbar-thin scrollbar-thumb-deep-2 scrollbar-track-deep-2">{children}</main>
             <SanityLive/>
           </div>
         </div>
@@ -40,3 +40,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+//
