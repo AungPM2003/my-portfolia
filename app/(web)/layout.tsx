@@ -1,8 +1,10 @@
 import Header from "@/app/_components/Header";
 import "@/app/globals.css";
 import { Metadata } from "next";
-import { Josefin_Sans } from "next/font/google";
+import { Madimi_One } from "next/font/google";
 import SideNav from "@/app/_components/sideNav/index";
+import { SanityLive } from "@/sanity/lib/live";
+
 
 export const metadata: Metadata = {
   title: {
@@ -11,29 +13,32 @@ export const metadata: Metadata = {
   },
 };
 
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  display: "swap",
-});
-
+const indieFlower = Madimi_One({
+  weight:"400",
+  subsets:['latin'],
+  display:"swap",
+})
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${josefin.className} h-full antialiased`}>
-      <body className="bg-primary-300 flex h-full min-h-full flex-col">
-        <div className="w-full max-h-dvh">
+    <html lang="en" className={`${indieFlower.className} tracking-wide h-full antialiased font-bold scroll-smooth`}>
+      <body className="bg-deep-1 text-text-secondary flex h-full min-h-full flex-col text-default">
+        <div className="max-h-dvh w-full ">
           <Header />
-          <div className="max-w-350 border border-accent-300 grid grid-cols-[200px_minmax(0,1fr)] mx-auto  pt-[8em]">
-            <nav className="hidden lg:block p-3 border border-red-400 rounded-md">
-              <SideNav/>
+          <div className="mx-auto md:max-w-275 lg:max-w-375 lg:grid lg:grid-cols-[200px_minmax(0,1fr)] overflow-hidden ">
+            <nav className="hidden pt-[8em] lg:ps-2 lg:block">
+              <SideNav />
             </nav>
-            <main>{children}</main>
+            <main className="h-dvh p-4 pt-[8em] lg:grid lg:grid-cols-[minmax(0,1fr)_300px] overflow-y-scroll scrollbar-thin scrollbar-thumb-deep-2 scrollbar-track-deep-2">{children}</main>
+            <SanityLive/>
           </div>
         </div>
       </body>
     </html>
   );
 }
+
+//
