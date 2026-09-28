@@ -1,5 +1,5 @@
 import { sanityFetch } from "@/sanity/lib/live";
-import {AUTHOR_QUERY } from "./query";
+import {AUTHOR_QUERY } from "@/sanity/queries/query";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import Title from '@/app/_components/title';

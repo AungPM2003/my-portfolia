@@ -15,12 +15,95 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: sanity/extract.json
+export type Catergory = {
+  _id: string;
+  _type: "catergory";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  description?: string;
+};
+
+export type Slug = {
+  _type: "slug";
+  current: string;
+  source?: string;
+};
+
+export type AuthorReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "author";
+};
+
+export type CatergoryReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "catergory";
+};
+
+export type Article = {
+  _id: string;
+  _type: "article";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  author?: AuthorReference;
+  catergories?: Array<
+    {
+      _key: string;
+    } & CatergoryReference
+  >;
+  publishedAt?: string;
+  body?: BlockContent;
+};
+
 export type SanityImageAssetReference = {
   _ref: string;
   _type: "reference";
   _weak?: boolean;
   [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
+
+export type BlockContent = Array<
+  | {
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "lg" | "heading" | "blockquote";
+      listItem?: "bullet";
+      markDefs?: Array<
+        | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }
+        | ({
+            _key: string;
+          } & TextColor)
+      >;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }
+  | {
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+      _key: string;
+    }
+>;
 
 export type Author = {
   _id: string;
@@ -37,7 +120,7 @@ export type Author = {
     alternativeText?: string;
     _type: "image";
   };
-  bio?: string;
+  bio?: BlockContent;
 };
 
 export type SanityImageCrop = {
@@ -54,6 +137,24 @@ export type SanityImageHotspot = {
   y: number;
   height: number;
   width: number;
+};
+
+export type HighlightColor = {
+  _type: "highlightColor";
+  label?: string;
+  value?: string;
+};
+
+export type TextColor = {
+  _type: "textColor";
+  label?: string;
+  value?: string;
+};
+
+export type SimplerColor = {
+  _type: "simplerColor";
+  label?: string;
+  value?: string;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -153,17 +254,20 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type Slug = {
-  _type: "slug";
-  current: string;
-  source?: string;
-};
-
 export type AllSanitySchemaTypes =
+  | Catergory
+  | Slug
+  | AuthorReference
+  | CatergoryReference
+  | Article
   | SanityImageAssetReference
+  | BlockContent
   | Author
   | SanityImageCrop
   | SanityImageHotspot
+  | HighlightColor
+  | TextColor
+  | SimplerColor
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
@@ -171,30 +275,4 @@ export type AllSanitySchemaTypes =
   | SanityFileAsset
   | SanityAssetSourceData
   | SanityImageAsset
-  | Geopoint
-  | Slug;
-
-// Source: app/(web)/about/query.tsx
-// Variable: AUTHOR_QUERY
-// Query: *[_type=="author" && defined(authorImage)][0]{    _id,authorImage,bio,name  }
-export type AUTHOR_QUERY_RESULT = {
-  _id: string;
-  authorImage: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alternativeText?: string;
-    _type: "image";
-  };
-  bio: string | null;
-  name: string | null;
-} | null;
-
-// Query TypeMap
-import "@sanity/client";
-declare module "@sanity/client" {
-  interface SanityQueries {
-    '*[_type=="author" && defined(authorImage)][0]{\n    _id,authorImage,bio,name\n  }': AUTHOR_QUERY_RESULT;
-  }
-}
+  | Geopoint;
