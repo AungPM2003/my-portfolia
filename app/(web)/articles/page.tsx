@@ -1,23 +1,25 @@
-import CatergoryBtn from "@/app/_components/catergoryBtn";
+
 import { sanityFetch } from "@/sanity/lib/live"
 import { CATERGORIES_QUERY } from "@/sanity/queries/query"
 import { Catergory } from "@/sanity/types";
-
+import ArticleCatergory from "@/app/_components/articleCatergory"
 export default async function page() {
   const {data:catergories}:{data:Catergory[]}= await sanityFetch({query:CATERGORIES_QUERY});
   
   return(
     <>
-    <div>
-      article
-    </div>
-    <div className="">
-      <div className="flex flex-wrap gap-2 content-start justify-center p-2  border border-deep-3 rounded-md">
-        {catergories.map((catergory) =>(
-         <CatergoryBtn key={catergory._id} catergory={catergory}/>
-        ))}
+      <div className="order-2 lg:order-1 min-w-0">
+        <h2 className="text-header text-highlight-alt">
+          Articles
+        </h2>
+        <p className="text-paragraph py-2">Here are some of the latest articles that I've learned.</p>
+
       </div>
-    </div>
+
+      <div className="order-1 lg:order-2">
+        <ArticleCatergory catergories={catergories} />
+      </div>
+
     </>
   )
 }

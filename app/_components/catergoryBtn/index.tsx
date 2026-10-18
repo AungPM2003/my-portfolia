@@ -12,7 +12,8 @@ export default function CatergoryBtn({catergory}:CatergoryBtnProps){
     const searchParam = useSearchParams();
     const router = useRouter();
     const pathname = usePathname();
-    const current_param = searchParam.get("catergory");
+    const current_param = searchParam.get("catergory") ?? "All";
+
   function handleOnClick(filter){
     const params = new URLSearchParams(searchParam);
     params.set("catergory",filter)
