@@ -54,6 +54,9 @@ export const blockContent = defineType({
             options:{
                 hotspot:true
             }
+        }),
+        defineArrayMember({
+            type:'codeContent',
         })
     ]
 })

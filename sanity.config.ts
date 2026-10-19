@@ -13,6 +13,7 @@ import { apiVersion, dataset, projectId } from "./sanity/env";
 import { schema } from "./sanity/schemaTypes";
 import { structure } from "./sanity/structure";
 import { simplerColorInput } from "sanity-plugin-simpler-color-input";
+import { codeInput } from "@sanity/code-input";
 
 export default defineConfig({
   basePath: "/studio",
@@ -25,6 +26,8 @@ export default defineConfig({
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
+    //for sanity code input
+    codeInput(),
     //sanity block rich editor color input
     simplerColorInput({
       // Note: These are all optional
