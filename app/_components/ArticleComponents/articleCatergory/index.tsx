@@ -1,5 +1,5 @@
 
-import CatergoryBtn from '../catergoryBtn'
+import CatergoryBtn from '../../catergoryBtn'
 
 export default function index({catergories}) {
   return (

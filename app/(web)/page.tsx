@@ -1,5 +1,5 @@
 // import Title from '@/app/_components/title'
-import ArticleCard from '@/app/_components/articleCards'
+import ArticleCard from '@/app/_components/ArticleComponents/articleCards'
 export default function Page() {
   return (<div className="py-6 px-2">
     {/* <Title text='Home'/> */}

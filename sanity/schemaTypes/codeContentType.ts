@@ -1,4 +1,4 @@
-import { defineField } from "sanity";
+import { defineField,  } from "sanity";
 
 export const codeContent = defineField({
   type: 'code',
@@ -14,3 +14,4 @@ export const codeContent = defineField({
     disableFullscreen: false,
   },
 })
+

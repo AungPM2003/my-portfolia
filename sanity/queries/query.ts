@@ -14,3 +14,11 @@ export const CATERGORIES_QUERY = defineQuery(
         _id,title,slug,description
     }`
 )
+
+//querying for the individual article
+export const ARTICLE_QUERY = defineQuery(
+  `*[_type == "article" && slug.current == $slug][0]{
+    body,title
+  }
+  `
+)
