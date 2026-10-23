@@ -12,9 +12,6 @@ export const components:PortableTextComponents = {
             props.value ? (
                 <Image src={urlFor(props.value).width(600).height(400).quality(100).auto("format").url()} alt={props?.value?.alt || ""} width={600} height={400}/>
             ):null,
-        // codeContent:({value}:any) =>{
-        //     return <Refractor language={value.language} value={value.code}/>
-        // }
         codeContent:({value}) => (
            <HighLighter language={value.language} codeString={value.code}/>
         )
@@ -24,9 +21,8 @@ export const components:PortableTextComponents = {
         textColor:({children,value}) => <span style={{color:value.value}}> {children}</span>,
     },
     block:{
-        lg:({children}) => <p>{children}</p>,
+        normal:({children}) => <p className="text-paragraph py-3">{children}</p>,
         heading:({children}) => <h1 className="text-3xl my-2"> {children}</h1>,
-        
     },
     
 }

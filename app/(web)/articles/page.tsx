@@ -13,7 +13,6 @@ export default async function page() {
           Articles
         </h2>
         <p className="text-paragraph py-2">Here are some of the latest articles that I've learned.</p>
-
       </div>
 
       <div className="order-1 lg:order-2">

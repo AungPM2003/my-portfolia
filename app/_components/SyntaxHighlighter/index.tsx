@@ -10,8 +10,10 @@ type Props = {
 export default function HighLighter({language = "typescript",codeString}:Props){
     
     return(
-         <SyntaxHighlighter language={language} style={duotoneSea}>
-            {codeString}
-        </SyntaxHighlighter>
+        <div className='bg-red-700'>
+            <SyntaxHighlighter language={language} style={duotoneSea}>
+                {codeString}
+            </SyntaxHighlighter>
+        </div>
     )
 }
