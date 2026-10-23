@@ -32,7 +32,7 @@ export default function RootLayout({
             <nav className="hidden pt-[8em] lg:ps-2 lg:block">
               <SideNav />
             </nav>
-            <main className="h-dvh p-4 pt-[8em] grid lg:grid-cols-[minmax(0,1fr)_300px] overflow-y-scroll scrollbar-thin scrollbar-thumb-deep-2 scrollbar-track-deep-2 content-start">{children}</main>
+            <main className="h-dvh p-4 pt-[8em] grid grid-cols-[minmax(0,1fr)] lg:grid lg:grid-cols-[minmax(0,1fr)_300px] overflow-y-scroll scrollbar-thin scrollbar-thumb-deep-2 scrollbar-track-deep-2 content-start">{children}</main>
             <SanityLive/>
           </div>
         </div>
