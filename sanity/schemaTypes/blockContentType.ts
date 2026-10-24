@@ -11,7 +11,7 @@ export const blockContent = defineType({
             /* for text style for content */
             styles:[
                 {title:"Normal",value:"normal"},
-                // {title:"Large",value:"lg"},
+                {title:"Large",value:"lg"},
                 {title:"Heading",value:"heading"},
                 {title:'Quote',value:'blockquote'}
             ],

@@ -1,11 +1,10 @@
 
 import { sanityFetch } from "@/sanity/lib/live"
 import { CATERGORIES_QUERY } from "@/sanity/queries/query"
+import { Catergory } from "@/sanity/types";
 import ArticleCatergory from "@/app/_components/ArticleComponents/articleCatergory"
-import { connection } from "next/server";
 export default async function page() {
-  await connection();
-  const {data:catergories}= await sanityFetch({query:CATERGORIES_QUERY});
+  const {data:catergories}:{data:Catergory[]}= await sanityFetch({query:CATERGORIES_QUERY});
   
   return(
     <>

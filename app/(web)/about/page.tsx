@@ -8,12 +8,8 @@ import { components } from "@/sanity/portableTextComponent";
 import techIcons from "./techIcons";
 
 
-
-
-
 export default async function page() {
-  const {data:author}= await sanityFetch({query:AUTHOR_QUERY})
-
+  const {data:author} = await sanityFetch({query:AUTHOR_QUERY})
   return (
     <div>
       <Title text="About"/>
