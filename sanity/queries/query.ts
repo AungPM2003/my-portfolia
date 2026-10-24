@@ -3,7 +3,7 @@ import { defineQuery } from "next-sanity";
 
 //querying for the author myself
 export const AUTHOR_QUERY = defineQuery(
-  `*[_type=="author" && defined(authorImage)][0]{
+  `*[_type=="author"][0]{
     _id,authorImage,bio,name
   }`
 )

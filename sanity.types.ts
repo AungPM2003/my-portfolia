@@ -14,7 +14,9 @@
 
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
-// Source: sanity/extract.json
+// Source: schema.json
+export type CodeContent = Code;
+
 export type Catergory = {
   _id: string;
   _type: "catergory";
@@ -28,7 +30,7 @@ export type Catergory = {
 
 export type Slug = {
   _type: "slug";
-  current: string;
+  current?: string;
   source?: string;
 };
 
@@ -103,6 +105,9 @@ export type BlockContent = Array<
       _type: "image";
       _key: string;
     }
+  | ({
+      _key: string;
+    } & CodeContent)
 >;
 
 export type Author = {
@@ -125,18 +130,18 @@ export type Author = {
 
 export type SanityImageCrop = {
   _type: "sanity.imageCrop";
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
 };
 
 export type SanityImageHotspot = {
   _type: "sanity.imageHotspot";
-  x: number;
-  y: number;
-  height: number;
-  width: number;
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
 };
 
 export type HighlightColor = {
@@ -155,6 +160,14 @@ export type SimplerColor = {
   _type: "simplerColor";
   label?: string;
   value?: string;
+};
+
+export type Code = {
+  _type: "code";
+  language?: string;
+  filename?: string;
+  code?: string;
+  highlightedLines?: Array<number>;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -178,9 +191,9 @@ export type SanityImagePalette = {
 
 export type SanityImageDimensions = {
   _type: "sanity.imageDimensions";
-  height: number;
-  width: number;
-  aspectRatio: number;
+  height?: number;
+  width?: number;
+  aspectRatio?: number;
 };
 
 export type SanityImageMetadata = {
@@ -206,14 +219,14 @@ export type SanityFileAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash: string;
-  extension: string;
-  mimeType: string;
-  size: number;
-  assetId: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
   uploadId?: string;
-  path: string;
-  url: string;
+  path?: string;
+  url?: string;
   source?: SanityAssetSourceData;
 };
 
@@ -235,14 +248,14 @@ export type SanityImageAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash: string;
-  extension: string;
-  mimeType: string;
-  size: number;
-  assetId: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
   uploadId?: string;
-  path: string;
-  url: string;
+  path?: string;
+  url?: string;
   metadata?: SanityImageMetadata;
   source?: SanityAssetSourceData;
 };
@@ -255,6 +268,7 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
+  | CodeContent
   | Catergory
   | Slug
   | AuthorReference
@@ -268,6 +282,7 @@ export type AllSanitySchemaTypes =
   | HighlightColor
   | TextColor
   | SimplerColor
+  | Code
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
@@ -276,3 +291,64 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageAsset
   | Geopoint;
+
+// Source: sanity/queries/query.ts
+// Variable: AUTHOR_QUERY
+// Query: *[_type=="author"][0]{    _id,authorImage,bio,name  }
+export type AUTHOR_QUERY_RESULT = {
+  _id: string;
+  authorImage: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alternativeText?: string;
+    _type: "image";
+  } | null;
+  bio: BlockContent | null;
+  name: string | null;
+} | null;
+
+// Source: sanity/queries/query.ts
+// Variable: CATERGORIES_QUERY
+// Query: *[_type=="catergory"]{        _id,title,slug,description    }
+export type CATERGORIES_QUERY_RESULT = Array<{
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  description: string | null;
+}>;
+
+// Source: sanity/queries/query.ts
+// Variable: ARTICLE_QUERY
+// Query: *[_type == "article" && slug.current == $slug][0]{    body,title  }
+export type ARTICLE_QUERY_RESULT = {
+  body: BlockContent | null;
+  title: string | null;
+} | null;
+
+// Source: sanity/queries/query.ts
+// Variable: TITLE_QUERY
+// Query: *[_type == "article" && $catergory in catergories[]->title]{    _id,title,slug,catergories[] -> {title}  }
+export type TITLE_QUERY_RESULT = Array<{
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  catergories: Array<{
+    title: string | null;
+  }> | null;
+}>;
+
+// Query TypeMap
+declare global {
+  interface SanityQueries {
+    '*[_type=="author"][0]{\n    _id,authorImage,bio,name\n  }': AUTHOR_QUERY_RESULT;
+    '*[_type=="catergory"]{\n        _id,title,slug,description\n    }': CATERGORIES_QUERY_RESULT;
+    '*[_type == "article" && slug.current == $slug][0]{\n    body,title\n  }\n  ': ARTICLE_QUERY_RESULT;
+    '*[_type == "article" && $catergory in catergories[]->title]{\n    _id,title,slug,catergories[] -> {title}\n  }\n  ': TITLE_QUERY_RESULT;
+  }
+}
+// Lets @sanity/client releases that predate the global registry read it too
+declare module "@sanity/client" {
+  interface SanityQueries extends globalThis.SanityQueries {}
+}
