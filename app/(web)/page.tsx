@@ -1,5 +1,5 @@
 
-import ArticleCard from '@/app/_components/ArticleComponents/articleCards'
+import ArticleCard from '@/app/_components/ArticleComponents/articleLinkCard'
 import { sanityFetch } from "@/sanity/lib/live";
 import { TITLE_QUERY } from '@/sanity/queries/query';
 export default async function Page() {

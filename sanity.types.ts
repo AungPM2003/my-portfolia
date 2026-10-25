@@ -34,6 +34,13 @@ export type Slug = {
   source?: string;
 };
 
+export type SanityImageAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+};
+
 export type AuthorReference = {
   _ref: string;
   _type: "reference";
@@ -56,6 +63,13 @@ export type Article = {
   _rev: string;
   title?: string;
   slug?: Slug;
+  poster?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
   author?: AuthorReference;
   catergories?: Array<
     {
@@ -66,13 +80,6 @@ export type Article = {
   body?: BlockContent;
 };
 
-export type SanityImageAssetReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-};
-
 export type BlockContent = Array<
   | {
       children?: Array<{
@@ -81,7 +88,7 @@ export type BlockContent = Array<
         _type: "span";
         _key: string;
       }>;
-      style?: "normal" | "lg" | "heading" | "blockquote";
+      style?: "normal" | "heading" | "blockquote";
       listItem?: "bullet";
       markDefs?: Array<
         | {
@@ -110,6 +117,22 @@ export type BlockContent = Array<
     } & CodeContent)
 >;
 
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
 export type Author = {
   _id: string;
   _type: "author";
@@ -126,22 +149,6 @@ export type Author = {
     _type: "image";
   };
   bio?: BlockContent;
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
 };
 
 export type HighlightColor = {
@@ -271,14 +278,14 @@ export type AllSanitySchemaTypes =
   | CodeContent
   | Catergory
   | Slug
+  | SanityImageAssetReference
   | AuthorReference
   | CatergoryReference
   | Article
-  | SanityImageAssetReference
   | BlockContent
-  | Author
   | SanityImageCrop
   | SanityImageHotspot
+  | Author
   | HighlightColor
   | TextColor
   | SimplerColor
@@ -328,6 +335,26 @@ export type ARTICLE_QUERY_RESULT = {
 } | null;
 
 // Source: sanity/queries/query.ts
+// Variable: ARTICLES_QUERY
+// Query: *[_type == "article" ]{    _id,title,slug,poster,catergories[] -> {_id,title}  }
+export type ARTICLES_QUERY_RESULT = Array<{
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  poster: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  catergories: Array<{
+    _id: string;
+    title: string | null;
+  }> | null;
+}>;
+
+// Source: sanity/queries/query.ts
 // Variable: TITLE_QUERY
 // Query: *[_type == "article" && $catergory in catergories[]->title]{    _id,title,slug,catergories[] -> {title}  }
 export type TITLE_QUERY_RESULT = Array<{
@@ -340,15 +367,13 @@ export type TITLE_QUERY_RESULT = Array<{
 }>;
 
 // Query TypeMap
-declare global {
+import "@sanity/client";
+declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type=="author"][0]{\n    _id,authorImage,bio,name\n  }': AUTHOR_QUERY_RESULT;
     '*[_type=="catergory"]{\n        _id,title,slug,description\n    }': CATERGORIES_QUERY_RESULT;
     '*[_type == "article" && slug.current == $slug][0]{\n    body,title\n  }\n  ': ARTICLE_QUERY_RESULT;
+    '*[_type == "article" ]{\n    _id,title,slug,poster,catergories[] -> {_id,title}\n  }': ARTICLES_QUERY_RESULT;
     '*[_type == "article" && $catergory in catergories[]->title]{\n    _id,title,slug,catergories[] -> {title}\n  }\n  ': TITLE_QUERY_RESULT;
   }
-}
-// Lets @sanity/client releases that predate the global registry read it too
-declare module "@sanity/client" {
-  interface SanityQueries extends globalThis.SanityQueries {}
 }

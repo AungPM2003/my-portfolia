@@ -17,6 +17,13 @@ export const article = defineType({
             }
         }),
         defineField({
+            name:'poster',
+            type:'image',
+            options:{
+                hotspot:true
+            }
+        }),
+        defineField({
             name:'author',
             type:'reference',
             to:{type:'author'},
