@@ -13,7 +13,7 @@ export default async function page() {
         <h2 className="text-header text-highlight-alt">
           Articles
         </h2>
-        <p className="text-paragraph py-2 border-b">Here are some of the latest articles that I've learned.</p>
+        <p className="text-paragraph py-2 border-b border-b-grey-50">Here are some of the latest articles that I've learned.</p>
         <ArticleCard/>
       </div>
 
