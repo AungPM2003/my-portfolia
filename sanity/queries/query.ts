@@ -22,7 +22,12 @@ export const ARTICLE_QUERY = defineQuery(
   }
   `
 )
-
+//querying for all article Card
+export const ARTICLES_QUERY = defineQuery(
+  `*[_type == "article" ]{
+    _id,title,slug,poster,catergories[] -> {_id,title}
+  }`
+)
 //querying catergories type and the individual article card tile
 export const TITLE_QUERY = defineQuery(
   `*[_type == "article" && $catergory in catergories[]->title]{
