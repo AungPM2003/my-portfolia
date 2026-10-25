@@ -1,21 +1,23 @@
 
 import ArticleCard from '@/app/_components/ArticleComponents/articleLinkCard'
 import { sanityFetch } from "@/sanity/lib/live";
-import { TITLE_QUERY } from '@/sanity/queries/query';
+import { ARTICLES_QUERY } from '@/sanity/queries/query';
 export default async function Page() {
-  const {data:cardTitles} = await sanityFetch({query:TITLE_QUERY,params:{catergory:"DSA"}})
+  const {data:articles} = await sanityFetch({query:ARTICLES_QUERY})
   
   return (
-  <div className="py-6 px-2">
-      <h2 className='text-white text-3xl'>Hello, I am <span className='text-highlight-alt'>Aung Phone Myat</span></h2>
-      <p className="text-lg py-4">
-        An Inspired Developer who love to create amazing things.In this Section,I will Share my blog journey.
-      </p>
+  <div>
+      <div className='border-b-[0.5px] border-b-body'>
+          <h2 className='text-white font-bold text-hero/tight py-4'>Hello, I am <span className='text-hightlight'>Aung Phone Myat</span></h2>
+          <p className="text-paragraph/tight tracking-wider py-4 pe-6 text-body">
+            An Inspired Developer who love to create amazing things.In this Section,I will Share my blog journey.
+          </p>
+      </div>
 
       
-        <ArticleCard cardTitles={cardTitles}>
-          <h2 className="text-highlight-alt text-2xl">Data Structure And Algorithms</h2>
-          <p>Here are explanations of Data Structures and Algorithms and their related LeetCode problems.</p>
+        <ArticleCard articles={articles}>
+          <h2 className="text-section-title font-bold py-2">Data Structure And Algorithms</h2>
+          <p className="text-paragraph/tight text-body py-4">Here are explanations of Data Structures and Algorithms and their related LeetCode problems.</p>
         </ArticleCard>
   </div>);
 }

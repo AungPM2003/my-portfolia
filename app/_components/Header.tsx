@@ -13,7 +13,7 @@ export default function Header(): JSX.Element {
 
   return (
     <>
-      <div className="bg-deep-2/20 absolute top-0 z-50 flex h-16 w-full items-center justify-between border-b border-deep-4 backdrop-blur-lg px-4 text-xl sm:px-6 md:px-8 lg:px-10 xl:px-12">
+      <div className="text-card-title bg-deep-2/20 absolute top-0 z-50 flex h-16 w-full items-center justify-between border-b border-deep-4 backdrop-blur-lg px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
         <Link
           href="/"
           className="focus-visible:ring-primary-950 focus-visible:ring-offset-deep-2 rounded-lg font-bold transition-colors outline-none hover:text-deep-4 focus-visible:ring-2 focus-visible:ring-offset-2"

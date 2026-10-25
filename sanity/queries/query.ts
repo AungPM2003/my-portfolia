@@ -25,7 +25,9 @@ export const ARTICLE_QUERY = defineQuery(
 //querying for all article Card
 export const ARTICLES_QUERY = defineQuery(
   `*[_type == "article" ]{
-    _id,title,slug,poster,catergories[] -> {_id,title}
+    _id,title,slug,poster,catergories[] -> {_id,title},body[style=="normal"][0]{
+      children[0]{text}
+    }
   }`
 )
 //querying catergories type and the individual article card tile

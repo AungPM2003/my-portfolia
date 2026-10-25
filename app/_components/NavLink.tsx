@@ -17,7 +17,7 @@ export default function NavIconLink({ children, icon, href, target }: Props) {
       href={href}
       target={target}
       className={clsx(
-        "hover:bg-deep-3 flex place-items-center items-center gap-4 rounded-md p-4 font-bold transition-[color,background-color,border-color] duration-300",
+        "hover:bg-deep-3 flex place-items-center items-center gap-4 rounded-md p-3 font-bold transition-[color,background-color,border-color] duration-300",
         {
           "bg-deep-3":
             `/${selected}` === href || (selected === null && href === "/"),
