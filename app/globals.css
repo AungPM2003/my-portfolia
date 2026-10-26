@@ -13,11 +13,13 @@
   --color-text-secondary: #a9b4c2; /* softer, for secondary/muted text on dark bg */
   --color-text-dark: #0d1b2a;      /* = your deep-1, use as text on light backgrounds */
 
-  --color-highlight: #e07a5f;      /* warm terracotta/coral — soft, editorial feel */
-  --color-highlight-alt: #d6455a;  /* muted brick red — a bit bolder, still not neon */
-  --color-highlight-amber: #e9a05b; /* if you want warmth without any "red" at all */
-  
+  --color-highlight: #FF6B72;      /* warm terracotta/coral — soft, editorial feel */
+  --color-creamyWhite:#E6EDF5;
   /* text font size*/
-  --text-header:24px;
-  --text-paragraph:20px;
+  --text-hero:40px;
+  --text-section:28px;
+  --text-card:20px;
+  --text-body:16px;
+  --text-tag:13px;
+
 }
