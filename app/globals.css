@@ -12,9 +12,11 @@
   --color-text-primary: #e0e1dd;   /* = your deep-5, use as body text on dark backgrounds */
   --color-text-secondary: #a9b4c2; /* softer, for secondary/muted text on dark bg */
   --color-text-dark: #0d1b2a;      /* = your deep-1, use as text on light backgrounds */
-
   --color-highlight: #FF6B72;      /* warm terracotta/coral — soft, editorial feel */
   --color-creamyWhite:#E6EDF5;
+  --color-s-thumb:#3A4F6B;
+  --color-s-track:#14233A;
+  --color-tagColor:#FFB3B7;
   /* text font size*/
   --text-hero:40px;
   --text-section:28px;

@@ -8,7 +8,7 @@ export default async function Page() {
   return (
   <div>
       <div className='border-b-[0.5px] border-b-body'>
-          <h2 className='text-white font-bold text-hero/tight tracking-tighter py-4'>Hello,I'm <span className='text-highlight'>Aung Phone Myat</span></h2>
+          <h2 className='text-white font-bold text-hero/tight tracking-tighter py-4'>Hello,I&apos;m <span className='text-highlight'>Aung Phone Myat</span></h2>
           <p className="text-body/relaxed tracking-tight py-4 pe-6 text-body">
             An Inspired Developer who love to create amazing things.In this Section,I will Share my blog journey.
           </p>
