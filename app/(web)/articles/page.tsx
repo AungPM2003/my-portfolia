@@ -10,10 +10,12 @@ export default async function page() {
   return(
     <>
       <div className="order-2 lg:order-1 min-w-0 p-2">
-        <h2 className="text-header text-highlight-alt">
-          Articles
-        </h2>
-        <p className="text-paragraph py-2 border-b border-b-grey-50">Here are some of the latest articles that I've learned.</p>
+        <div className=" border-b border-b-grey-50">
+          <h2 className="text-hero/tight font-bold tracking-wide text-highlight py-2">
+            Articles
+          </h2>
+          <p className="text-body/tight tracking-wide py-4 pb-6">Here are some of the latest articles that I've learned.</p>
+        </div>
         <ArticleCard/>
       </div>
 
