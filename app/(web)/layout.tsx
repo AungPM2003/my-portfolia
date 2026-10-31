@@ -28,7 +28,7 @@ export default function RootLayout({
       <body className="bg-deep-1 text-text-secondary flex h-full min-h-full flex-col text-default">
         <div className="max-h-dvh w-full">
           <Header />
-          <div className="mx-auto md:max-w-275 lg:max-w-375 lg:grid lg:grid-cols-[200px_minmax(0,1fr)] overflow-hidden justify-items-center px-2 md:px-6 lg:px-12 gap-4">
+          <div className="mx-auto md:max-w-275 lg:max-w-375 lg:grid lg:grid-cols-[200px_minmax(0,1fr)] overflow-hidden  px-2 md:px-6 lg:px-12 gap-4">
             <nav className="hidden pt-[8em] lg:ps-2 lg:block">
               <SideNav />
             </nav>
