@@ -2,9 +2,9 @@ import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ARTICLES_QUERY } from "@/sanity/queries/query";
 import ArticleTag from "@/app/_components/ArticleComponents/articleTag"
+import formatDate from "@/app/lib/dateFormat";
 import Image from "next/image";
 import Link from "next/link";
-
 
 
 export default async function index() {
@@ -26,8 +26,12 @@ export default async function index() {
                                     ))}
                             </div>
                             <h1 className="text-card text-creamyWhite font-bold py-2">{article?.title}</h1>
-                            <div className="flex">
-                                <div className="flex-1">Date</div>   
+                            <div className="text-tag/tight flex gap-2">
+                                <span >{formatDate(article?.publishedAt)}</span>
+                                <span>.</span>
+                                <span>
+                                    {article.timeToRead} min Read
+                                </span>
                             </div>
                         </div>
                     </Link>
