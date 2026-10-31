@@ -320,6 +320,13 @@
         },
         "optional": true
       },
+      "timeToRead": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "number"
+        },
+        "optional": true
+      },
       "body": {
         "type": "objectAttribute",
         "value": {

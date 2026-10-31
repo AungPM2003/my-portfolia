@@ -36,6 +36,14 @@ export const article = defineType({
         defineField({
             name:'publishedAt',
             type:'datetime',
+            initialValue:() => new Date().toISOString(),
+            options:{
+                dateFormat:"MMM D,YYYY",
+            }
+        }),
+        defineField({
+            name:"timeToRead",
+            type:'number',
         }),
         defineField({
             name:'body',
