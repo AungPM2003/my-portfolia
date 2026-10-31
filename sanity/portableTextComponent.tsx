@@ -21,8 +21,8 @@ export const components:PortableTextComponents = {
         textColor:({children,value}) => <span style={{color:value.value}}> {children}</span>,
     },
     block:{
-        normal:({children}) => <p className="text-paragraph py-3">{children}</p>,
-        heading:({children}) => <h1 className="text-3xl my-2"> {children}</h1>,
+        normal:({children}) => <p className="text-[17px] tracking-wider text-creamyWhite py-3 hyphens-auto">{children}</p>,
+        heading:({children}) => <h1 className="text-[22px] text-creamyWhite py-4 font-bold"> {children}</h1>,
     },
     
 }

@@ -4,7 +4,7 @@ import { ARTICLES_QUERY } from "@/sanity/queries/query";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import ArticleTag from "@/app/_components/ArticleComponents/articleTag"
 import EmptyCard from "@/app/_components/ArticleComponents/emptyCard"
-import formatDate from "@/app/lib/dateFormat";
+import ArticleTimeDate from "@/app/_components/ArticleComponents/articleTimeDate"
 import Image from "next/image";
 import Link from "next/link";
 
@@ -39,13 +39,7 @@ export default async function index({filter}:componentProps) {
                                     ))}
                             </div>
                             <h1 className="text-card text-creamyWhite font-bold py-2">{article?.title}</h1>
-                            <div className="text-tag/tight flex gap-2">
-                                <span >{formatDate(article?.publishedAt)}</span>
-                                <span>.</span>
-                                <span>
-                                    {article.timeToRead} min Read
-                                </span>
-                            </div>
+                            <ArticleTimeDate publishedAt={article?.publishedAt} timeToRead={article?.timeToRead}/>
                             <div className="text-highlight text-sm flex items-center py-2">Read More <ArrowRightIcon className="h-3 w-3"/></div>
                         </div>
                     </Link>

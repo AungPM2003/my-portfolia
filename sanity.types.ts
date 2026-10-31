@@ -329,10 +329,16 @@ export type CATERGORIES_QUERY_RESULT = Array<{
 
 // Source: sanity/queries/query.ts
 // Variable: ARTICLE_QUERY
-// Query: *[_type == "article" && slug.current == $slug][0]{    body,title  }
+// Query: *[_type == "article" && slug.current == $slug][0]{    body,title,publishedAt,timeToRead,catergories[]->{_id,title}  }
 export type ARTICLE_QUERY_RESULT = {
   body: BlockContent | null;
   title: string | null;
+  publishedAt: string | null;
+  timeToRead: number | null;
+  catergories: Array<{
+    _id: string;
+    title: string | null;
+  }> | null;
 } | null;
 
 // Source: sanity/queries/query.ts
@@ -380,7 +386,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type=="author"][0]{\n    _id,authorImage,bio,name\n  }': AUTHOR_QUERY_RESULT;
     '*[_type=="catergory"]{\n        _id,title,slug,description\n    }': CATERGORIES_QUERY_RESULT;
-    '*[_type == "article" && slug.current == $slug][0]{\n    body,title\n  }\n  ': ARTICLE_QUERY_RESULT;
+    '*[_type == "article" && slug.current == $slug][0]{\n    body,title,publishedAt,timeToRead,catergories[]->{_id,title}\n  }\n  ': ARTICLE_QUERY_RESULT;
     '*[_type == "article" ]{\n    _id,title,slug,poster,publishedAt,timeToRead,catergories[] -> {_id,title},body[style=="normal"][0]{\n      children[0]{text}\n    }\n  }': ARTICLES_QUERY_RESULT;
     '*[_type == "article" && $catergory in catergories[]->title]{\n    _id,title,slug,catergories[] -> {title}\n  }\n  ': TITLE_QUERY_RESULT;
   }
