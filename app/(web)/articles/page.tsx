@@ -13,7 +13,7 @@ export default async function page({searchParams}:PageProps) {
   const filter =  params?.catergory ?? "All";
   return(
     <>
-      <div className="order-2 lg:order-1 p-2 w-full">
+      <div className="order-2 lg:order-1 py-2 px-4 w-full">
         <div className="border-b border-b-grey-50">
           <h2 className="text-hero/tight font-bold tracking-wide text-highlight py-2">
             Articles

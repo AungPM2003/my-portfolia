@@ -31,13 +31,13 @@ const navItems: Nav[] = [
 const linkItems: Nav[] = [
   {
     id: 1,
-    href: "",
+    href: "https://github.com/AungPM2003",
     label: "github",
     icon: <Github className="h-5 w-5" />,
   },
   {
     id: 2,
-    href: "",
+    href: "https://linkedin.com/in/aung-phone-myat-1b5455293",
     label: "linkedIn",
     icon: <LinkedIn className="h-5 w-5" />,
   },

@@ -3,7 +3,7 @@ import { Bars3Icon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { useState } from "react";
 import { JSX } from "react/jsx-runtime";
-import NavModal from "@/app/_components/NavModal";
+import NavModal from "@/app/_components/NavComponents/NavModal";
 
 export default function Header(): JSX.Element {
   const [toggle, setToggle] = useState(false);

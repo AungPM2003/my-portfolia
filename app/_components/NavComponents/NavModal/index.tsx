@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from "react";
-import SideNav from "@/app/_components/sideNav/collapse";
+import SideNav from "@/app/_components/NavComponents/sideNav";
 
 type Props = {
   toggle: boolean;
