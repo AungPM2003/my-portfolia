@@ -6,7 +6,7 @@ export default function SideNav() {
     <div className="self-start rounded-md border border-deep-2 bg-deep-2/40 backdrop-blur-md shadow-lg p-3">
       <div className="flex flex-col gap-1.5 rounded-md">
         {navItems.map((item) => (
-          <NavLink key={item.id} icon={item.icon} href={item.href}>
+          <NavLink key={item.id} icon={item.icon} href={item.href} target={item.target}>
             {item.label}
           </NavLink>
         ))}
@@ -16,7 +16,7 @@ export default function SideNav() {
 
       <div className="flex flex-col gap-1.5 rounded-md pt-2">
         {linkItems.map((item) => (
-          <NavLink key={item.id} icon={item.icon} href={item.href}>
+          <NavLink key={item.id} icon={item.icon} href={item.href}  target={item.target}>
             {item.label}
           </NavLink>
         ))}
