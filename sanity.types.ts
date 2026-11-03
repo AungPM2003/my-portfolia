@@ -397,8 +397,7 @@ export type TITLE_QUERY_RESULT = Array<{
 }>;
 
 // Query TypeMap
-import "@sanity/client";
-declare module "@sanity/client" {
+declare global {
   interface SanityQueries {
     '*[_type=="author"][0]{\n    _id,authorImage,bio,name\n  }': AUTHOR_QUERY_RESULT;
     '*[_type=="catergory"]{\n        _id,title,slug,description\n    }': CATERGORIES_QUERY_RESULT;
@@ -406,4 +405,8 @@ declare module "@sanity/client" {
     '*[_type == "article" ]{\n    _id,title,slug,poster,publishedAt,timeToRead,catergories[] -> {_id,title},body[style=="normal"][0]{\n      children[0]{text}\n    }\n  }': ARTICLES_QUERY_RESULT;
     '*[_type == "article" && $catergory in catergories[]->title]{\n    _id,title,slug,catergories[] -> {title}\n  }\n  ': TITLE_QUERY_RESULT;
   }
+}
+// Lets @sanity/client releases that predate the global registry read it too
+declare module "@sanity/client" {
+  interface SanityQueries extends globalThis.SanityQueries {}
 }
