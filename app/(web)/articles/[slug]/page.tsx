@@ -11,8 +11,13 @@ export default async function page({
     //quering for the individual articles
     const {data:article} = await sanityFetch({query:ARTICLE_QUERY,params:params})
     return (
-        <div className="py-2">
-            <MainArticle article={article}/>
-        </div>
+        <>
+            <div className="py-2">
+                <MainArticle article={article}/>
+            </div>
+            <div>
+                
+            </div>
+        </>
       )
 }
