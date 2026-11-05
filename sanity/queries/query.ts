@@ -20,12 +20,7 @@ export const ARTICLE_QUERY = defineQuery(
   `*[_type == "article" && slug.current == $slug][0]{
     body,title,publishedAt,timeToRead,
     "categories":catergories[]->{_id,title},
-    "headings":body[style=="heading"]{
-      children[]
-    },
-    "paragraphs":body[style=="normal"]{
-      children[]
-    }
+    "headings":body[style=="heading"].children[]{text,_key},
   }
   `
 )

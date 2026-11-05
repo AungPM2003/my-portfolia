@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${jetBrainsMono.className} tracking-wide h-full antialiased font-bold scroll-smooth`}>
+    <html lang="en" className={`${jetBrainsMono.className} tracking-wide h-full antialiased font-bold scroll-smooth motion-safe:scroll-smooth`}>
       <body className="bg-deep-1 text-text-secondary flex h-full min-h-full flex-col text-default">
         <div className="max-h-dvh w-full">
           <Header />
