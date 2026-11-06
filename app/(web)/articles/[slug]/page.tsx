@@ -2,9 +2,9 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { ARTICLE_QUERY } from "@/sanity/queries/query";
 
 import MainArticle from '@/app/_components/ArticleComponents/mainArticle'
-import Link from "next/link";
+
 import { slugify } from "@/app/lib/slugify";
-import { toPlainText } from "next-sanity";
+
 interface PageProps {
     params:Promise<{slug:"title"}>
 }
