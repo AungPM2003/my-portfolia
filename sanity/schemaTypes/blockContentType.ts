@@ -13,7 +13,8 @@ export const blockContent = defineType({
                 {title:"Normal",value:"normal"},
                 // {title:"Large",value:"lg"},
                 {title:"Heading",value:"heading"},
-                {title:'Quote',value:'blockquote'}
+                {title:'Quote',value:'blockquote'},
+                {title:"CMD",value:'cmd'},
             ],
 
             /* for paragraph listing */

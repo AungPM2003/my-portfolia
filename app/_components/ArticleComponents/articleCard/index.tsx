@@ -28,7 +28,7 @@ export default async function index({filter}:componentProps) {
                          <div className="aspect-video">
                          {
                             article?.poster ? 
-                            <Image src={urlFor(article.poster).url()} className="object-cover rounded-lg" width={400} height={200} alt={article.title || "Image"}/>:
+                            <Image src={urlFor(article.poster).width(400).height(200).auto("format").url()} className="object-cover rounded-lg" width={400} height={200} alt={article.title || "Image"}/>:
                             null
                         }
                          </div>

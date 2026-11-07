@@ -12,7 +12,7 @@ export const components:PortableTextComponents = {
     types:{
         image: (props) => 
             props.value ? (
-                <Image src={urlFor(props.value).width(600).height(400).quality(100).auto("format").url()} alt={props?.value?.alt || ""} width={600} height={400}/>
+                <Image src={urlFor(props.value).width(600).height(400).fit("crop").quality(100).auto("format").url()} alt={props?.value?.alt || ""} width={600} height={400}/>
             ):null,
         codeContent:({value}) => (
            <HighLighter language={value.language} codeString={value.code}/>
@@ -24,7 +24,10 @@ export const components:PortableTextComponents = {
     },
     block:{
         normal:({children}) => <p className="text-[17px] tracking-wider text-creamyWhite py-3 hyphens-auto">{children}</p>,
-        heading:({children,value}) => <h1 id={slugify(toPlainText(value))}className="text-[22px] text-creamyWhite py-4 font-bold scroll-mt-14"> {children}</h1>,
+        heading:({children,value}) => <h1 id={slugify(toPlainText(value))} className="text-[22px] text-creamyWhite py-4 font-bold scroll-mt-14"> {children}</h1>,
+        cmd:(({children}) => <div className="border border-deep-2 bg-deep-2/40 rounded-lg px-4 py-2 text-wrap">
+            <p className="text-sm">{children}</p>
+        </div>)
     },
     
 }

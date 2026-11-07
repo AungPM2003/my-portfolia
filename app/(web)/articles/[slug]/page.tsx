@@ -20,7 +20,7 @@ export default async function page({
                 <MainArticle article={article}/>
             </div>
             <div>
-                <div className="sticky top-0" >
+                <div className="hidden md:block sticky top-0" >
                     <h3 className="text-tag text-highlight py-1 px-2">On this page</h3>
                     <div className="flex flex-col border-l border-l-[#A7B6C8]">
                     {

@@ -89,7 +89,7 @@ export type BlockContent = Array<
         _type: "span";
         _key: string;
       }>;
-      style?: "normal" | "heading" | "blockquote";
+      style?: "normal" | "heading" | "blockquote" | "cmd";
       listItem?: "bullet";
       markDefs?: Array<
         | {
