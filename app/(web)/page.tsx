@@ -1,10 +1,9 @@
-
 import ArticleCard from '@/app/_components/ArticleComponents/articleLinkCard'
 import { sanityFetch } from "@/sanity/lib/live";
 import { ARTICLES_QUERY } from '@/sanity/queries/query';
 export default async function Page() {
   const {data:articles} = await sanityFetch({query:ARTICLES_QUERY})
-  
+ 
   return (
   <div>
       <div className='border-b-[0.5px] border-b-body'>
@@ -15,9 +14,13 @@ export default async function Page() {
       </div>
 
       
-        <ArticleCard articles={articles}>
-          <h2 className="text-section/tight tracking-tight text-creamyWhite font-bold py-4">Data Structure And Algorithms</h2>
-          <p className="text-body/relaxed tracking-tighter py-4">Here are explanations of Data Structures and Algorithms and their related LeetCode problems.</p>
+        <ArticleCard articles={articles} category="DSA">
+          <h2 className="text-section/tight tracking-tight text-creamyWhite font-bold py-2">Basic Data Structure</h2>
+          <p className="text-body/relaxed tracking-tighter">Here are explanations of Basic Data Structures.</p>
+        </ArticleCard>
+        <ArticleCard articles={articles} category="Docker">
+          <h2 className="text-section/tight tracking-tight text-creamyWhite font-bold">Docker Time</h2>
+          <p className="text-body/relaxed tracking-tighter py-2">Here are some of the Docker facts that I have learned.</p>
         </ArticleCard>
   </div>);
 }
