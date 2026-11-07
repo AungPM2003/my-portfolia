@@ -14,7 +14,7 @@ type componentProps = {
 
 export default async function index({filter}:componentProps) {
     const {data:articles} = await sanityFetch({query:ARTICLES_QUERY});
-    const filterArticles = articles.filter((article) => article.catergories?.some(item => item.title == filter))
+    const filterArticles = articles.filter((article) => article.catergories?.some(item => item.title == filter));
     if(filterArticles.length <= 0) return(
         <EmptyCard filter={filter}/>
     )
