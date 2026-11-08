@@ -1,7 +1,7 @@
 import Header from "@/app/_components/Header";
 import "@/app/globals.css";
 import { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import SideNav from "@/app/_components/NavComponents/sideNav";
 import { SanityLive } from "@/sanity/lib/live";
 
@@ -18,13 +18,15 @@ const jetBrainsMono = JetBrains_Mono({
   subsets:['latin'],
   display:"swap",
 })
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${jetBrainsMono.className} tracking-wide h-full antialiased font-bold scroll-smooth motion-safe:scroll-smooth`}>
+    <html lang="en" className={`${inter.className} ${mono.className} tracking-wide h-full antialiased font-bold scroll-smooth motion-safe:scroll-smooth`}>
       <body className="bg-deep-1 text-text-secondary flex h-full min-h-full flex-col text-default">
         <div className="max-h-dvh w-full">
           <Header />

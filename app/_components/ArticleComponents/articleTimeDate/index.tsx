@@ -8,7 +8,7 @@ export default function index({publishedAt,timeToRead}:componentProps) {
   return (
     <div className="text-tag/tight flex gap-2 items-center">
         <span >{formatDate(publishedAt)}</span>
-        <span>.</span>
+        <span>&middot;</span>
         <span>
             {timeToRead} min Read
         </span>

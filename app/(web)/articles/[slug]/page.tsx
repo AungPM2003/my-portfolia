@@ -1,10 +1,7 @@
 import { sanityFetch } from "@/sanity/lib/live";
 import { ARTICLE_QUERY } from "@/sanity/queries/query";
-
 import MainArticle from '@/app/_components/ArticleComponents/mainArticle'
-
-import { slugify } from "@/app/lib/slugify";
-
+import ArticleOnPage from "@/app/_components/ArticleComponents/articleOnPage"
 interface PageProps {
     params:Promise<{slug:"title"}>
 }
@@ -13,24 +10,17 @@ export default async function page({
 }:PageProps) {
     //quering for the individual articles
     const {data:article} = await sanityFetch({query:ARTICLE_QUERY,params:params})
-    
+
+    function handleOnClick(){
+        return
+    }
     return (
         <>
             <div className="py-2">
                 <MainArticle article={article}/>
             </div>
             <div>
-                <div className="hidden md:block sticky top-0" >
-                    <h3 className="text-tag text-highlight py-1 px-2">On this page</h3>
-                    <div className="flex flex-col border-l border-l-[#A7B6C8]">
-                    {
-                        article?.headings?.map((head) => (
-                            <a href={`#${slugify(head?.text || "")}`} key={head?._key} className="text-creamyWhite font-bold text-sm/tight p-2 ">{head?.text}</a>
-                            
-                        ))
-                    }
-                    </div>
-                </div>
+                <ArticleOnPage article={article}/>
             </div>
         </>
       )
