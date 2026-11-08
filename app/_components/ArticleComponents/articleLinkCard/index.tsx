@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ARTICLES_QUERY_RESULT } from "@/sanity.types";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import ArticleTag from "@/app/_components/ArticleComponents/articleTag";
+import textSplitter from "@/app/lib/textSplitter";
 type Props = {
     children:React.ReactNode,
     articles:ARTICLES_QUERY_RESULT,
@@ -10,6 +11,7 @@ type Props = {
 }
 export default function Index({children,articles,category}:Props){
     const filterArticles = articles.filter((article) => article.catergories?.some(item => item.title == category));
+    
     return (
         <div className="py-2">
         {children}
@@ -23,7 +25,12 @@ export default function Index({children,articles,category}:Props){
                             ))}
                         </div>
                         <h1 className="text-card/tight tracking-tight font-bold text-creamyWhite">{article.title}</h1>
-                        <p className="text-body/tight tracking-tight">{article.body?.children?.text?.split(' ').slice(0, 5).join(' ') + '...'}</p>
+                        <p className="text-body/tight tracking-tight">{textSplitter({
+                            text:article?.body?.children?.text ?? "",
+                            startpoint:0,
+                            endpoint:5,
+                            replaceItem:"..."
+                            })}</p>
                         <span className="text-highlight text-sm flex items-center">Read More <ArrowRightIcon className="h-3 w-3"/></span>
                     </Link>
                 ))

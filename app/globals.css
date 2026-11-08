@@ -19,6 +19,12 @@
   --color-tagColor:#FFB3B7;
   --color-greenish:#5EEAD4;
   --color-bBottom:#25384e;
+
+  /*for portable text*/
+  --color-headings:#f5f8fc;
+  --color-bodyText:#d5dee9;
+  --color-meta:#a7b6c8;
+  
   /* text font size*/
   --text-hero:40px;
   --text-section:28px;
