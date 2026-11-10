@@ -8,16 +8,16 @@ interface Props {
   children: string;
   icon: ReactNode;
   href: string;
-  target:string;
+  target: string;
 }
-export default function NavIconLink({ children, icon, href,target }: Props) {
+export default function NavIconLink({ children, icon, href, target }: Props) {
   const selected = useSelectedLayoutSegment();
   return (
     <Link
       href={href}
       target={target}
       className={clsx(
-        "hover:bg-deep-3 flex place-items-center items-center gap-4 rounded-md p-4 font-bold transition-[color,background-color,border-color] duration-300",
+        "hover:bg-deep-3 flex items-center gap-4 rounded-xl px-4 py-2.5 font-bold transition-[color,background-color,border-color] duration-300",
         {
           "bg-deep-3":
             `/${selected}` === href || (selected === null && href === "/"),
