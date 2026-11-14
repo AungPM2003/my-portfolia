@@ -13,11 +13,6 @@ export const metadata: Metadata = {
   },
 };
 
-const jetBrainsMono = JetBrains_Mono({
-  weight: "400",
-  subsets: ['latin'],
-  display: "swap",
-})
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 export default function RootLayout({
@@ -28,13 +23,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.className} ${mono.className} tracking-wide h-full antialiased font-bold scroll-smooth motion-safe:scroll-smooth`}>
       <body className="bg-deep-1 text-text-secondary h-full min-h-full  text-default">
-        <div className="h-dvh w-full grid grid-rows-[3rem_1fr] gap-4">
+        <div className="h-dvh w-full grid grid-rows-[3rem_1fr] gap-4 ">
           <Header />
-          <div className="container mx-auto grid lg:grid-cols-[200px_1fr] gap-6 overflow-hidden ">
+          <div className="container mx-auto grid lg:grid-cols-[200px_1fr] gap-6 overflow-hidden">
             <nav className="hidden lg:block pt-6">
               <SideNav />
             </nav>
-            <main className="h-dvh grid lg:grid-cols-[1fr_250px] overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-transparent hover:scrollbar-thumb-s-thumb p-4 duration-300 content-start">{children}</main>
+            {/* <main className="h-dvh grid lg:grid-cols-[1fr_250px] overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-transparent hover:scrollbar-thumb-s-thumb p-4 duration-300 content-start gap-4">{children}</main> */}
+
+            <main className="grid lg:grid-cols-[1fr_250px] overflow-y-auto gap-10 px-6 lg:px-0">
+              {children}
+            </main>
             <SanityLive />
           </div>
         </div>

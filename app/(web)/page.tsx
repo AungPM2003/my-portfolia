@@ -1,12 +1,12 @@
 import ArticleCard from '@/app/_components/ArticleComponents/articleLinkCard'
 import { getArticles } from '../lib/query';
-import { Suspense } from 'react';
+
 
 
 export default async function Page() {
   const articles = await getArticles();
   return (
-    <div>
+    <div >
       <div className='border-b-[0.5px] border-b-body flex flex-col gap-4 py-4'>
         <h2 className='text-white font-bold text-hero/tight tracking-wide'>Hello,I&apos;m <span className='text-highlight'>Aung Phone Myat</span></h2>
         <p className="text-body/relaxed tracking-tight text-body">
