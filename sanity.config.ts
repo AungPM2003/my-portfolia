@@ -31,13 +31,13 @@ export default defineConfig({
     //sanity block rich editor color input
     simplerColorInput({
       // Note: These are all optional
-      defaultColorFormat: 'rgba',
+      defaultColorFormat: "rgba",
       defaultColorList: [
-        { label: 'Light', value: '#ffffff' },
-        { label: 'Dark', value: '#333333' },
-        { label: 'Primary', value: '#d6455a' },
-        { label: 'Accent', value: '#626754' },
-        { label: 'Custom...', value: 'custom' },
+        { label: "Light", value: "#ffffff" },
+        { label: "Dark", value: "#333333" },
+        { label: "Primary", value: "#d6455a" },
+        { label: "Accent", value: "#626754" },
+        { label: "Custom...", value: "custom" },
       ],
       enableSearch: true,
       showColorValue: true,

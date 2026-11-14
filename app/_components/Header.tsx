@@ -13,10 +13,10 @@ export default function Header(): JSX.Element {
 
   return (
     <>
-      <div className="bg-deep-2/20 flex w-full items-center justify-between border-b border-deep-4 backdrop-blur-lg text-card sticky top-0 px-6">
+      <div className="bg-deep-2/20 border-deep-4 text-card sticky top-0 flex w-full items-center justify-between border-b px-6 backdrop-blur-lg">
         <Link
           href="/"
-          className="focus-visible:ring-primary-950 focus-visible:ring-offset-deep-2 rounded-lg font-bold transition-colors outline-none text-white hover:text-deep-4 focus-visible:ring-2 focus-visible:ring-offset-2"
+          className="focus-visible:ring-primary-950 focus-visible:ring-offset-deep-2 hover:text-deep-4 rounded-lg font-bold text-white transition-colors outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
         >
           Aung P Myat
         </Link>

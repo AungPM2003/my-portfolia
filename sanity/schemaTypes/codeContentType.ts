@@ -1,17 +1,16 @@
-import { defineField,  } from "sanity";
+import { defineField } from "sanity";
 
 export const codeContent = defineField({
-  type: 'code',
-  name: 'codeContent',
-  title: 'Code with all options',
+  type: "code",
+  name: "codeContent",
+  title: "Code with all options",
   options: {
-    language: 'typescript',
+    language: "typescript",
     languageAlternatives: [
-      {title: 'Typescript', value: 'typescript'},
-      {title: 'Python', value: 'python'},
+      { title: "Typescript", value: "typescript" },
+      { title: "Python", value: "python" },
     ],
     withFilename: true,
     disableFullscreen: false,
   },
-})
-
+});

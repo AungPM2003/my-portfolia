@@ -1,5 +1,10 @@
-import { RiJavascriptFill,RiNextjsFill,RiReactjsFill,RiSupabaseFill } from "react-icons/ri";
-import { FaGolang,FaPython,FaDocker} from "react-icons/fa6";
+import {
+  RiJavascriptFill,
+  RiNextjsFill,
+  RiReactjsFill,
+  RiSupabaseFill,
+} from "react-icons/ri";
+import { FaGolang, FaPython, FaDocker } from "react-icons/fa6";
 import { TbBrandDjango } from "react-icons/tb";
 import { BiLogoPostgresql } from "react-icons/bi";
 const techIcons = [

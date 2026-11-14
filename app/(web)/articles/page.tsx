@@ -1,37 +1,32 @@
-import { sanityFetch } from "@/sanity/lib/live"
-import { CATERGORIES_QUERY } from "@/sanity/queries/query"
+import { sanityFetch } from "@/sanity/lib/live";
+import { CATERGORIES_QUERY } from "@/sanity/queries/query";
 import { connection } from "next/server";
-import ArticleCatergory from "@/app/_components/ArticleComponents/articleCatergory"
-import ArticleCard from '@/app/_components/ArticleComponents/articleCard';
+import ArticleCatergory from "@/app/_components/ArticleComponents/articleCatergory";
+import ArticleCard from "@/app/_components/ArticleComponents/articleCard";
+import { ArticleHeader } from "@/app/_components/ArticleComponents/ArticleHeader/ArticleHeader";
 type PageProps = {
-  searchParams: Promise<{ [key: string]: string }>
-}
+  searchParams: Promise<{ [key: string]: string }>;
+};
 export default async function page({ searchParams }: PageProps) {
   await connection();
-  const { data: catergories } = await sanityFetch({ query: CATERGORIES_QUERY });
   const params = await searchParams;
   const filter = params?.catergory ?? "All";
+  const { data: catergories } = await sanityFetch({ query: CATERGORIES_QUERY });
+
   return (
     <>
-      <div className="w-full">
-        <div className="border-b border-b-grey-50">
-          <h2 className="text-hero/tight font-bold tracking-wide text-highlight py-2">
-            Articles
-          </h2>
-          <p className="text-body/tight tracking-wide py-4 pb-6">Here are some of the latest articles that I've learned.</p>
-        </div>
+      <ArticleHeader small={true} />
+      <div className="w-full order-2 lg:order-1">
+        <ArticleHeader small={false} />
         <ArticleCard filter={filter} />
       </div>
 
-      <div className=" hidden lg:block border border-deep-2 bg-deep-2/40 p-4 rounded-2xl lg:flex lg:flex-col md:gap-4 gap-2 h-fit w-fit shrink-0">
-        <h1 className="text-highlight text-body md:py-2 flex-none">Catergories</h1>
+      <div className="border-deep-2 bg-deep-2/40 order-1 lg:order-2 h-fit w-fit shrink-0 gap-2 rounded-2xl border p-4 md:gap-4 flex flex-col">
+        <h1 className="text-highlight text-body">
+          Catergories
+        </h1>
         <ArticleCatergory catergories={catergories} />
       </div>
     </>
-
-
-  )
+  );
 }
-
-
-
