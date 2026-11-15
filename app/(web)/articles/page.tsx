@@ -1,8 +1,8 @@
 import { sanityFetch } from "@/sanity/lib/live";
 import { CATERGORIES_QUERY } from "@/sanity/queries/query";
 import { connection } from "next/server";
-import ArticleCatergory from "@/app/_components/ArticleComponents/articleCatergory";
-import ArticleCard from "@/app/_components/ArticleComponents/articleCard";
+import ArticleCatergory from "@/app/_components/ArticleComponents/articleCatergory/ArticleCatergory";
+import ArticleCard from "@/app/_components/ArticleComponents/articleCard/ArticleCard";
 import { ArticleHeader } from "@/app/_components/ArticleComponents/ArticleHeader/ArticleHeader";
 type PageProps = {
   searchParams: Promise<{ [key: string]: string }>;

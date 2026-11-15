@@ -1,4 +1,4 @@
-import Header from "@/app/_components/Header";
+import Header from "@/app/_components/GeneralComponents/Header";
 import "@/app/globals.css";
 import { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";

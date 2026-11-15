@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { HomeIcon, UserIcon, PencilIcon } from "@heroicons/react/20/solid";
-import { Github, LinkedIn } from "../linkIcons";
+import { Github, LinkedIn } from "../../IconComponents/AsideLinkIcons";
 type Nav = {
   id: number;
   href: string;

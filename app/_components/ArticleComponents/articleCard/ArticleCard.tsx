@@ -2,9 +2,9 @@ import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import { ARTICLES_QUERY } from "@/sanity/queries/query";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
-import ArticleTag from "@/app/_components/ArticleComponents/articleTag";
-import EmptyCard from "@/app/_components/ArticleComponents/emptyCard";
-import ArticleTimeDate from "@/app/_components/ArticleComponents/articleTimeDate";
+import ArticleTag from "@/app/_components/ArticleComponents/articleTag/ArticleTag"
+import EmptyCard from "@/app/_components/ArticleComponents/emptyCard/EmptyCard"
+import ArticleTimeDate from "@/app/_components/ArticleComponents/articleTimeDate/ArticleTimeDate"
 import Image from "next/image";
 import Link from "next/link";
 
