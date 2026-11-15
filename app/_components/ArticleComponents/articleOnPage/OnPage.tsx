@@ -16,7 +16,7 @@ export default function OnPage({ article }: indexProps) {
     return (
         <div className="hidden md:block sticky top-0" >
             <h3 className="text-tag text-highlight py-1 px-2 cursor-pointer flex  items-center gap-3" onClick={onClickHandler}>On this page <span>{isHidden ? <ChevronDownIcon className="w-4 h-4" /> : <ChevronUpIcon className="w-4 h-4" />}</span></h3>
-            <div className={`flex flex-col border-l border-l-[#A7B6C8] ${isHidden ? "hidden" : "block"}`}>
+            <div className={`flex flex-col border-l border-l-meta ${isHidden ? "hidden" : "block"}`}>
                 {
                     article?.headings?.map((head) => (
                         <a href={`#${slugify(head?.text || "")}`} key={head?._key} className="text-creamyWhite font-bold text-sm/tight p-2 ">{head?.text}</a>

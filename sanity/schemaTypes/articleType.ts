@@ -1,54 +1,53 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 export const article = defineType({
-    title:"Article",
-    name:"article",
-    type:"document",
-    fields:[
-        defineField({
-            name:"title",
-            type:'string',
-        }),
-        defineField({
-            name:'slug',
-            type:'slug',
-            options:{
-                source:'title'
-            }
-        }),
-        defineField({
-            name:'poster',
-            type:'image',
-            options:{
-                hotspot:true
-            }
-        }),
-        defineField({
-            name:'author',
-            type:'reference',
-            to:{type:'author'},
-        }),
-        defineField({
-            name:'catergories',
-            type:'array',
-            of:[defineArrayMember({type:'reference',to:{type:'catergory'}})]
-        }),
-        defineField({
-            name:'publishedAt',
-            type:'datetime',
-            initialValue:() => new Date().toISOString(),
-            options:{
-                dateFormat:"MMM D,YYYY",
-            }
-        }),
-        defineField({
-            name:"timeToRead",
-            type:'number',
-        }),
-        defineField({
-            name:'body',
-            type:'blockContent'
-        })
-
-    ]
-})
+  title: "Article",
+  name: "article",
+  type: "document",
+  fields: [
+    defineField({
+      name: "title",
+      type: "string",
+    }),
+    defineField({
+      name: "slug",
+      type: "slug",
+      options: {
+        source: "title",
+      },
+    }),
+    defineField({
+      name: "poster",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: "author",
+      type: "reference",
+      to: { type: "author" },
+    }),
+    defineField({
+      name: "catergories",
+      type: "array",
+      of: [defineArrayMember({ type: "reference", to: { type: "catergory" } })],
+    }),
+    defineField({
+      name: "publishedAt",
+      type: "datetime",
+      initialValue: () => new Date().toISOString(),
+      options: {
+        dateFormat: "MMM D,YYYY",
+      },
+    }),
+    defineField({
+      name: "timeToRead",
+      type: "number",
+    }),
+    defineField({
+      name: "body",
+      type: "blockContent",
+    }),
+  ],
+});
