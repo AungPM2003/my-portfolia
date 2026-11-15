@@ -34,7 +34,7 @@ export default function RootLayout({
             <nav className="hidden lg:block pt-6">
               <SideNav />
             </nav>
-            <main className="h-dvh grid lg:grid-cols-[1fr_300px] overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-transparent hover:scrollbar-thumb-s-thumb p-4 duration-300 content-start">{children}</main>
+            <main className="h-dvh grid lg:grid-cols-[1fr_250px] overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-transparent hover:scrollbar-thumb-s-thumb p-4 duration-300 content-start">{children}</main>
             <SanityLive />
           </div>
         </div>
