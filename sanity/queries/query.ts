@@ -38,3 +38,10 @@ export const TITLE_QUERY = defineQuery(
   }
   `,
 );
+
+/**
+ * @returns "counting how much each individual articles of categeroy has "
+ */
+export const COUNT_ARTICLE_BY_CATERGORY = defineQuery(
+  `count(*[_type == "article" && $catergory in catergories[] -> title])`
+)
