@@ -1,8 +1,8 @@
 type ArticleTag = {
-    title:string | null
+  title: string | null
 }
 
-export default function index({title}:ArticleTag) {
+export default function ArticleTag({ title }: ArticleTag) {
   return (
     <span className="bg-highlight/15 px-3 py-1 rounded-full text-tag text-tagColor" >{title}</span>
   )

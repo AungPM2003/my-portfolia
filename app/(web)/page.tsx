@@ -1,6 +1,6 @@
-import ArticleCard from '@/app/_components/ArticleComponents/articleLinkCard'
+import ArticleCard from '@/app/_components/ArticleComponents/articleLinkCard/ArticleLinkCard'
 import { getArticles } from '../lib/query';
-import { Suspense } from 'react';
+
 
 
 export default async function Page() {
