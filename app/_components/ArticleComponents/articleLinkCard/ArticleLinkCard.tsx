@@ -2,14 +2,14 @@
 import Link from "next/link"
 import { ARTICLES_QUERY_RESULT } from "@/sanity.types";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
-import ArticleTag from "@/app/_components/ArticleComponents/articleTag";
+import ArticleTag from "@/app/_components/ArticleComponents/articleTag/ArticleTag";
 import textSplitter from "@/app/lib/textSplitter";
 type Props = {
     children: React.ReactNode,
     articles: ARTICLES_QUERY_RESULT,
     category: string
 }
-export default async function Index({ children, articles, category }: Props) {
+export default async function ArticleLinkCard({ children, articles, category }: Props) {
     const filterArticles = articles.filter((article) => article.catergories?.some(item => item.title == category));
 
     return (

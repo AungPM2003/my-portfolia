@@ -10,7 +10,7 @@ interface Props {
   href: string;
   target: string;
 }
-export default function NavIconLink({ children, icon, href, target }: Props) {
+export default function NavLink({ children, icon, href, target }: Props) {
   const selected = useSelectedLayoutSegment();
   return (
     <Link
