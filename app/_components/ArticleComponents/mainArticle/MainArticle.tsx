@@ -7,7 +7,7 @@ import ArticleTimeDate from "@/app/_components/ArticleComponents/articleTimeDate
 import Link from "next/link";
 
 export default function MainArticle({ article }: { article: ARTICLE_QUERY_RESULT }) {
-  console.log(article?.headings)
+
   return (
     <div>
       <Link href={"/articles"} className="flex items-center gap-2 text-sm/tight tracking-wider text-greenish py-2">
