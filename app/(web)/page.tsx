@@ -1,8 +1,5 @@
 import ArticleCard from '@/app/_components/ArticleComponents/articleLinkCard/ArticleLinkCard'
 import { getArticles } from '../lib/query';
-
-
-
 export default async function Page() {
   const articles = await getArticles();
   return (
