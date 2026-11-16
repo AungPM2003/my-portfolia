@@ -4,9 +4,13 @@ import { connection } from "next/server";
 import ArticleCatergory from "@/app/_components/ArticleComponents/articleCatergory/ArticleCatergory";
 import ArticleCard from "@/app/_components/ArticleComponents/articleCard/ArticleCard";
 import { ArticleHeader } from "@/app/_components/ArticleComponents/ArticleHeader/ArticleHeader";
+
 type PageProps = {
   searchParams: Promise<{ [key: string]: string }>;
 };
+
+export const revalidate = 60;
+
 export default async function page({ searchParams }: PageProps) {
   await connection();
   const params = await searchParams;
