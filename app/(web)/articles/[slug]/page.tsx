@@ -12,7 +12,6 @@ export default async function page({ params }: PageProps) {
     params: params,
   });
 
-
   return (
     <>
       <div className="py-2">

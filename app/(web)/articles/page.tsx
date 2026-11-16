@@ -20,12 +20,14 @@ export default async function page({ searchParams }: PageProps) {
         <ArticleHeader small={false} />
         <ArticleCard filter={filter} />
       </div>
+      <div>
 
-      <div className="border-deep-2 bg-deep-2/40 order-1 lg:order-2 h-fit w-fit shrink-0 gap-2 rounded-2xl border p-4 md:gap-4 flex flex-col">
-        <h1 className="text-highlight text-body">
-          Catergories
-        </h1>
-        <ArticleCatergory catergories={catergories} />
+        <div className="border-deep-2 bg-deep-2/40 order-1 lg:order-2 h-fit w-full shrink-0 gap-2 rounded-2xl border p-4 md:gap-4 flex flex-col">
+          <h1 className="text-highlight text-body">
+            Catergories
+          </h1>
+          <ArticleCatergory catergories={catergories} />
+        </div>
       </div>
     </>
   );
