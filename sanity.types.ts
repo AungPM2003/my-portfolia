@@ -319,12 +319,13 @@ export type AUTHOR_QUERY_RESULT = {
 
 // Source: sanity/queries/query.ts
 // Variable: CATERGORIES_QUERY
-// Query: *[_type=="catergory"]{        _id,title,slug,description    }
+// Query: *[_type=="catergory"]{        _id,title,slug,description,"articleCount":count(*[_type=="article" && references(^._id)])    }
 export type CATERGORIES_QUERY_RESULT = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
   description: string | null;
+  articleCount: number;
 }>;
 
 // Source: sanity/queries/query.ts
@@ -384,20 +385,14 @@ export type TITLE_QUERY_RESULT = Array<{
   }> | null;
 }>;
 
-// Source: sanity/queries/query.ts
-// Variable: COUNT_ARTICLE_BY_CATERGORY
-// Query: count(*[_type == "article" && $catergory in catergories[] -> title])
-export type COUNT_ARTICLE_BY_CATERGORY_RESULT = number;
-
 // Query TypeMap
 declare global {
   interface SanityQueries {
     '*[_type=="author"][0]{\n    _id,authorImage,bio,name\n  }': AUTHOR_QUERY_RESULT;
-    '*[_type=="catergory"]{\n        _id,title,slug,description\n    }': CATERGORIES_QUERY_RESULT;
+    '*[_type=="catergory"]{\n        _id,title,slug,description,"articleCount":count(*[_type=="article" && references(^._id)])\n    }': CATERGORIES_QUERY_RESULT;
     '*[_type == "article" && slug.current == $slug][0]{\n    body,title,publishedAt,timeToRead,\n    "categories":catergories[]->{_id,title},\n    "headings":body[style=="heading"].children[]{text,_key},\n  }\n  ': ARTICLE_QUERY_RESULT;
     '*[_type == "article" ]{\n    _id,title,slug,poster,publishedAt,timeToRead,catergories[] -> {_id,title},body[style=="normal"][0]{\n      children[0]{text}\n    }\n  }': ARTICLES_QUERY_RESULT;
     '*[_type == "article" && $catergory in catergories[]->title]{\n    _id,title,slug,catergories[] -> {title}\n  }\n  ': TITLE_QUERY_RESULT;
-    'count(*[_type == "article" && $catergory in catergories[] -> title])': COUNT_ARTICLE_BY_CATERGORY_RESULT;
   }
 }
 // Lets @sanity/client releases that predate the global registry read it too

@@ -10,7 +10,7 @@ export const AUTHOR_QUERY = defineQuery(
 //querying for the catergories related for the article
 export const CATERGORIES_QUERY = defineQuery(
   `*[_type=="catergory"]{
-        _id,title,slug,description
+        _id,title,slug,description,"articleCount":count(*[_type=="article" && references(^._id)])
     }`,
 );
 
@@ -38,10 +38,3 @@ export const TITLE_QUERY = defineQuery(
   }
   `,
 );
-
-/**
- * @returns "counting how much each individual articles of categeroy has "
- */
-export const COUNT_ARTICLE_BY_CATERGORY = defineQuery(
-  `count(*[_type == "article" && $catergory in catergories[] -> title])`
-)
