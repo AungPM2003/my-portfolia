@@ -20,10 +20,11 @@ export default async function index({ filter }: componentProps) {
   if (filterArticles.length <= 0) return <EmptyCard filter={filter} />;
 
   return (
-    <div className="grid gap-2 py-4 text-white min-[500px]:grid-cols-2 xl:grid-cols-3">
+    <article className="grid gap-2 py-4 text-white min-[500px]:grid-cols-2 xl:grid-cols-3">
       {filterArticles.map((article) => (
-
-        <Link href={`articles/${article.slug?.current}`} className="border-deep-2 bg-deep-2/40 rounded-lg border flex flex-col gap-2"
+        <Link href={`articles/${article.slug?.current}`} className="border-deep-2 bg-deep-2/40 rounded-lg border flex flex-col gap-2 hover:-translate-y-1.5
+         hover:border-[#ff6b6b]/70
+         hover:shadow-[0_12px_30px_rgba(0,0,0,0.45),0_0_24px_rgba(255,107,107,0.18)] transition duration-300"
           key={article._id}>
 
           {article?.poster ? (
@@ -50,13 +51,16 @@ export default async function index({ filter }: componentProps) {
               <h1 className="text-lgBody text-creamyWhite font-bold">
                 {article?.title}
               </h1>
+
+            </div>
+            <div className="mt-auto  py-2 text-tag gap-2 flex flex-col">
               <ArticleTimeDate
                 publishedAt={article?.publishedAt}
                 timeToRead={article?.timeToRead}
               />
-            </div>
-            <div className="mt-auto text-highlight flex items-center py-2 text-tag gap-2">
-              Read More <ArrowRightIcon className="h-3 w-3" />
+              <div className="flex items-center gap-2 text-highlight">
+                Read More <ArrowRightIcon className="h-3 w-3" />
+              </div>
             </div>
           </div>
         </Link>
@@ -64,6 +68,6 @@ export default async function index({ filter }: componentProps) {
       ))
       }
 
-    </div >
+    </article >
   );
 }
