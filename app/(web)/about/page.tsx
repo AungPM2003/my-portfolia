@@ -10,7 +10,7 @@ export default async function page() {
   const { data: author } = await sanityFetch({ query: AUTHOR_QUERY });
   return (
     <div className="flex flex-col gap-4">
-      <div className="mb-4 grid gap-10 lg:grid-cols-[200_minmax(0,1fr)]">
+      <div className="mb-4 grid gap-10 lg:grid-cols-[200px_minmax(0,1fr)]">
         <div className="mx-auto">
           {author?.authorImage ? (
             <Image
@@ -22,12 +22,12 @@ export default async function page() {
             />
           ) : null}
         </div>
-        <div className="flex flex-col gap-4">
-          <div className="text-hero text-highlight font-bold tracking-tight">
+        <div className="@container flex flex-col gap-4">
+          <h1 className=" text-highlight font-bold tracking-tight text-[clamp(1.75rem,6vw,2.5rem)] whitespace-nowrap">
             {author?.name}
-          </div>
+          </h1>
           <div>
-            <p className="text-lgBody/relaxed text-creamyWhite">
+            <p className="text-[clamp(1rem,0.85rem+0.4vw,1.125rem)] leading-relaxed text-creamyWhite">
               Software engineer who turns real-world problems into practical
               solutions through code, and thinks beyond single features to the
               bigger picture of a system.
@@ -38,31 +38,29 @@ export default async function page() {
               // I started coding since the era of googling is part of a job!
             </p>
           </div>
-          <div>
-            <button>
-              <Link
-                href={"/articles"}
-                className="bg-highlight flex items-center rounded-full p-2 px-4 text-center text-black"
-              >
-                Read articles{" "}
-                <span>
-                  <ArrowRightIcon className="h-3 w-3" />
-                </span>
-              </Link>
-            </button>
-            <button className="p-2">
-              <Link
-                href={"https://github.com/AungPM2003"}
-                target="_blank"
-                className="group border-greenish text-greenish relative inline-flex items-center justify-center overflow-hidden rounded-full border px-4 py-2 transition-colors duration-300 hover:text-black"
-              >
-                <span
-                  aria-hidden="true"
-                  className="bg-greenish absolute inset-0 origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"
-                />
-                <span className="relative">GitHub</span>
-              </Link>
-            </button>
+          <div className="flex gap-3">
+            <Link
+              href={"/articles"}
+              className="bg-highlight inline-flex items-center rounded-full p-2 px-4 text-center text-black"
+            >
+              Read articles{" "}
+              <span>
+                <ArrowRightIcon className="h-3 w-3" />
+              </span>
+            </Link>
+
+
+            <Link
+              href={"https://github.com/AungPM2003"}
+              target="_blank"
+              className="group border-greenish text-greenish relative inline-flex items-center justify-center overflow-hidden rounded-full border px-4 py-2 transition-colors duration-300 hover:text-black"
+            >
+              <span
+                aria-hidden="true"
+                className="bg-greenish absolute inset-0 origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"
+              />
+              <span className="relative">GitHub</span>
+            </Link>
           </div>
         </div>
       </div>
@@ -103,6 +101,6 @@ export default async function page() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }

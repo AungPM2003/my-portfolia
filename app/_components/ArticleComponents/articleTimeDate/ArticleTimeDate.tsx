@@ -6,7 +6,7 @@ type componentProps = {
 export default function ArticleTimeDate({ publishedAt, timeToRead }: componentProps) {
   if (!publishedAt) return null;
   return (
-    <div className="text-tag/tight flex gap-2 items-center">
+    <div className="text-tag/tight text-meta flex gap-2 items-center">
       <span >{formatDate(publishedAt)}</span>
       <span>&middot;</span>
       <span>

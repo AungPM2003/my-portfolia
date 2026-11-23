@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
+export const revalidate = 60;
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -33,7 +34,7 @@ export default function RootLayout({
             </nav>
             {/* <main className="h-dvh grid lg:grid-cols-[1fr_250px] overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-transparent hover:scrollbar-thumb-s-thumb p-4 duration-300 content-start gap-4">{children}</main> */}
 
-            <main className="grid gap-x-10 gap-y-4 overflow-y-auto px-6 lg:grid-cols-[1fr_250px] lg:px-0">
+            <main className="grid gap-x-10 gap-y-4 overflow-y-auto px-6 lg:grid-cols-[1fr_250px] lg:px-0 scrollbar-thumb-transparent hover:scrollbar-thumb-s-thumb transition duration-300">
               {children}
             </main>
             <SanityLive />

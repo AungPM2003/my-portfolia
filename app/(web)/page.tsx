@@ -1,9 +1,11 @@
 import ArticleCard from '@/app/_components/ArticleComponents/articleLinkCard/ArticleLinkCard'
 import { getArticles } from '../lib/query';
+
+export const revalidate = 60;
 export default async function Page() {
   const articles = await getArticles();
   return (
-    <div>
+    <div className='min-w-0'>
       <div className="border-b-body flex flex-col gap-4 border-b-[0.5px] py-4">
         <h2 className="text-hero/tight font-bold tracking-wide text-white">
           Hello,I&apos;m <span className="text-highlight">Aung Phone Myat</span>

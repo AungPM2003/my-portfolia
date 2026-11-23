@@ -9,6 +9,7 @@ import { ARTICLES_QUERY } from "@/sanity/queries/query";
  *
  * @returns Primise<ARTICLES_QUERY_RESULT>
  */
+
 export async function getArticles(): Promise<ARTICLES_QUERY_RESULT> {
   const { data: articles } = await sanityFetch({ query: ARTICLES_QUERY });
   return articles;
