@@ -45,60 +45,6 @@ export default async function ArticleLinkCard({ children, articles, category }: 
                     </Link>
                 ))}
 
-                {filterArticles.map((article) => (
-                    <Link
-                        href={`articles/${article.slug?.current}`}
-                        key={article._id}
-                        className="border-deep-2 bg-deep-2/40 flex h-60 w-60 shrink-0 origin-center flex-col gap-4 rounded-lg border p-4 backdrop-blur-sm transition-all duration-200 will-change-transform first:ml-0 hover:-translate-20 hover:-translate-y-2 hover:rotate-6 first:hover:ml-25 first:hover:translate-y-0 snap-start "
-                    >
-                        <div className="flex gap-4">
-                            {article.catergories?.map((catergory) => (
-                                <ArticleTag key={catergory._id} title={catergory.title} />
-                            ))}
-                        </div>
-                        <h3 className="text-card/tight text-creamyWhite font-bold tracking-tight line-clamp-2">
-                            {article.title}
-                        </h3>
-                        <p className="text-body/tight tracking-tight">
-                            {textSplitter({
-                                text: article?.body?.children?.text ?? "",
-                                startpoint: 0,
-                                endpoint: 8,
-                                replaceItem: "...",
-                            })}
-                        </p>
-                        <span className="mt-auto text-highlight flex items-center text-sm">
-                            Read More <ArrowRightIcon className="h-3 w-3" />
-                        </span>
-                    </Link>
-                ))}
-                {filterArticles.map((article) => (
-                    <Link
-                        href={`articles/${article.slug?.current}`}
-                        key={article._id}
-                        className="border-deep-2 bg-deep-2/40 flex h-60 w-60 shrink-0 origin-center flex-col gap-4 rounded-lg border p-4 backdrop-blur-sm transition-all duration-200 will-change-transform first:ml-0 hover:-translate-20 hover:-translate-y-2 hover:rotate-6 first:hover:ml-25 first:hover:translate-y-0 snap-start "
-                    >
-                        <div className="flex gap-4">
-                            {article.catergories?.map((catergory) => (
-                                <ArticleTag key={catergory._id} title={catergory.title} />
-                            ))}
-                        </div>
-                        <h3 className="text-card/tight text-creamyWhite font-bold tracking-tight line-clamp-2">
-                            {article.title}
-                        </h3>
-                        <p className="text-body/tight tracking-tight">
-                            {textSplitter({
-                                text: article?.body?.children?.text ?? "",
-                                startpoint: 0,
-                                endpoint: 8,
-                                replaceItem: "...",
-                            })}
-                        </p>
-                        <span className="mt-auto text-highlight flex items-center text-sm">
-                            Read More <ArrowRightIcon className="h-3 w-3" />
-                        </span>
-                    </Link>
-                ))}
             </div>
         </div>
     );
